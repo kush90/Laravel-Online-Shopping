@@ -23,6 +23,7 @@ class CreateProductsTable extends Migration
             $table->integer('brand_id');
             $table->double('price');
             $table->integer('stock');
+            $table->integer('view_count')->default(0);
             $table->timestamps();
         });
     }

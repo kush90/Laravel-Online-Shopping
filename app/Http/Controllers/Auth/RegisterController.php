@@ -82,20 +82,22 @@ class RegisterController extends Controller
         $input=$request->all();
         $validator=$this->validator($input);
         $errors=$validator->errors();
+        
 
         if($validator->passes())
         {
             $user = $this->create($input)->toArray();
             $user['token']=str_random(30);
 
-            DB::table('user_activations')->insert(['id_user'=>$user["id"],'token'=>$user['token']]);
+            // DB::table('user_activations')->insert(['id_user'=>$user["id"],'token'=>$user['token']]);
 
             /*sending mail to user for account activation */
-            Mail::send('email.activation',$user,function($message) use ($user){
-                $message->to($user['email']);
-                $message->subject('Account Verification ');
-            });
-            return redirect()->to('users/login')->with('success','We sent Activation code to your Mail,Please check your Mail');
+            // Mail::send('email.activation',$user,function($message) use ($user){
+            //     $message->to($user['email']);
+            //     $message->subject('Account Verification ');
+            // });
+            // return redirect()->to('users/login')->with('success','We sent Activation code to your Mail,Please check your Mail');
+            return redirect()->to('users/login')->with('success','You are successfully registered');
         }
         else
         {

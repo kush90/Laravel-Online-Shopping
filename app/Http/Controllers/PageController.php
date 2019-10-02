@@ -28,6 +28,8 @@ class PageController extends Controller
     public  function index()
     {
         $products=Product::all();
+        if($products){
+
         $brands=Brand::all();
         $categories=Category::all();
 
@@ -75,6 +77,7 @@ class PageController extends Controller
 
 
        return view('home',compact('products','a','c_p','brands'));
+        }
     }
 
 

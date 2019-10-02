@@ -30,7 +30,13 @@
                 @endif
                 <li>
                     <a href="{{url('cart')}}"><i class="fa fa-shopping-cart" aria-hidden="true"></i>&nbsp;&nbsp;
-                        <span class="badge text-center">{{count(session()->get("cart"))}}</span>
+                        <span class="badge text-center">
+                        
+                            @if(session()->get("cart"))
+                                {{count(session()->get("cart"))}}
+                            @endif
+                            
+                            </span>
 
                     </a>
                 </li>
